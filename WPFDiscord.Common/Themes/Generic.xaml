@@ -1,0 +1,288 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WPFDiscord.Common.Controls">
+
+    <Style TargetType="{x:Type local:ImageButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ImageButton}">
+                    <Grid x:Name="grid"
+                          Cursor="{TemplateBinding Cursor}"
+                          Background="Transparent">
+                        <Border x:Name="border"
+                                Width="{TemplateBinding Width}"
+                                Height="{TemplateBinding Height}"
+                                Background="{TemplateBinding Background}" />
+                        <Image x:Name="img" Source="{Binding Image, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="10" Height="10" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="grid" Property="Cursor" Value="{Binding MouseOverCursor, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="border" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="img" Property="Source" Value="{Binding MouseOverImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="grid" Property="Cursor" Value="{Binding MouseOverCursor, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="border" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            <Setter TargetName="img" Property="Source" Value="{Binding MousePressedImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:EllipseButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:EllipseButton}">
+                    <Grid Background="Transparent"
+                          Width="{TemplateBinding Width}"
+                          Height="{TemplateBinding Height}"
+                          VerticalAlignment="Center">
+
+                        <!--<Border x:Name="border"
+                                Width="48"
+                                Height="48"
+                                Background="#36393F"
+                                CornerRadius="50"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">-->
+                        <Border x:Name="border"
+                                Width="48"
+                                Height="48"
+                                CornerRadius="23"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <Border.Background>
+                                <SolidColorBrush x:Name="borderBackgroundBrush" Color="#36393F" />
+                            </Border.Background>
+
+                            <TextBlock FontSize="14"
+                                       Foreground="DarkGray"
+                                       FontWeight="SemiBold"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       Text="{TemplateBinding Content}"/>
+                        </Border>
+
+                        <Image Width="26"
+                               Height="20"
+                               Source="{Binding NormalImage, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!--<EventTrigger RoutedEvent="Border.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                   Storyboard.TargetProperty="CornerRadius"
+                                                   >
+                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.02">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="23" BottomRight="23" TopLeft="23" TopRight="23" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.04">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="22" BottomRight="22" TopLeft="22" TopRight="22" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.06">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="21" BottomRight="21" TopLeft="21" TopRight="21" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.08">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="19" BottomRight="19" TopLeft="19" TopRight="19" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.12">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="18" BottomRight="18" TopLeft="18" TopRight="18" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.14">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="17" BottomRight="17" TopLeft="17" TopRight="17" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+
+
+                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Border.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                   Storyboard.TargetProperty="CornerRadius"
+                                                   >
+                                        <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.02">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="17" BottomRight="17" TopLeft="17" TopRight="17" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.04">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="18" BottomRight="18" TopLeft="18" TopRight="18" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.06">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="19" BottomRight="19" TopLeft="19" TopRight="19" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.08">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="21" BottomRight="21" TopLeft="21" TopRight="21" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.12">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="22" BottomRight="22" TopLeft="22" TopRight="22" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0.14">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <CornerRadius BottomLeft="23" BottomRight="23" TopLeft="23" TopRight="23" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+
+                                        </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>-->
+
+                        <Trigger SourceName="border" Property="IsMouseOver" Value="True">
+                            <!--<Setter TargetName="border" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource Mode=TemplatedParent}}" />-->
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        Duration="0:0:0.14"
+                                                        To="#5865F2" />
+                                        
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                   Storyboard.TargetProperty="CornerRadius"
+                                                   >
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.02">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="23" BottomRight="23" TopLeft="23" TopRight="23" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.04">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="22" BottomRight="22" TopLeft="22" TopRight="22" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.06">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="21" BottomRight="21" TopLeft="21" TopRight="21" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.08">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="19" BottomRight="19" TopLeft="19" TopRight="19" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.12">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="18" BottomRight="18" TopLeft="18" TopRight="18" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.14">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="17" BottomRight="17" TopLeft="17" TopRight="17" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        Duration="0:0:0.14"
+                                                        To="#36393F" />
+                                        
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                   Storyboard.TargetProperty="CornerRadius">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.02">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="17" BottomRight="17" TopLeft="17" TopRight="17" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.04">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="18" BottomRight="18" TopLeft="18" TopRight="18" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.06">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="19" BottomRight="19" TopLeft="19" TopRight="19" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.08">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="21" BottomRight="21" TopLeft="21" TopRight="21" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.12">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="22" BottomRight="22" TopLeft="22" TopRight="22" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                                <DiscreteObjectKeyFrame KeyTime="0:0:0.14">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <CornerRadius BottomLeft="23" BottomRight="23" TopLeft="23" TopRight="23" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

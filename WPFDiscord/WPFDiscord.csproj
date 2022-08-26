@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\ChannelLogo.png" />
+    <None Remove="Images\Exit.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\MouseOverExit.png" />
+    <None Remove="Images\MousePressMinimized.png" />
+    <None Remove="Images\MousePressWindowState.png" />
+    <None Remove="Images\NormalMinimized.png" />
+    <None Remove="Images\NormalWindowState.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ChannelLogo.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\MousePressMinimized.png" />
+    <Resource Include="Images\NormalMinimized.png" />
+    <Resource Include="Images\NormalWindowState.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPFDiscord.Common\WPFDiscord.Common.csproj" />
+    <ProjectReference Include="..\WPFDiscord.Models\WPFDiscord.Models.csproj" />
+    <ProjectReference Include="..\WPFDiscord.ViewModels\WPFDiscord.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Exit.png" />
+    <Resource Include="Images\MouseOverExit.png" />
+    <Resource Include="Images\MousePressWindowState.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,103 @@
+﻿<Window x:Class="WPFDiscord.MainWindow"
+        x:Name="Main" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:WPFDiscord.Common.Controls;assembly=WPFDiscord.Common"
+        mc:Ignorable="d"
+        MinWidth="940"
+        MinHeight="500"
+        Background="#202225"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="5"
+                      GlassFrameThickness="5"
+                      CornerRadius="5"
+                      CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid x:Name="MainGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="TitleBar" Grid.Row="0"
+              Background="Transparent"
+              MouseMove="Grid_MouseMove">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="72" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="84" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" Source="/Images/logo.png" Width="72" Height="22" />
+
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <controls:ImageButton x:Name="MinimizeButton"
+                                      Grid.Column="0"
+                                      Image="/Images/NormalMinimized.png"
+                                      MousePressedImage="/Images/MousePressMinimized.png"
+                                      MouseOverImage="/Images/MousePressMinimized.png"
+                                      MouseOverCursor="Hand"
+                                      MouseOverBackground="{StaticResource WindowStateMouseOverBackground}"
+                                      Click="MinimizeButton_Click"/>
+
+                <controls:ImageButton x:Name="MaximizeButton"
+                                      Grid.Column="1"
+                                      Image="/Images/NormalWindowState.png"
+                                      MousePressedImage="/Images/MousePressWindowState.png"
+                                      MouseOverImage="/Images/MousePressWindowState.png"
+                                      MouseOverCursor="Hand"
+                                      MouseOverBackground="{StaticResource WindowStateMouseOverBackground}"
+                                      Click="MaximizeButton_Click"/>
+
+                <controls:ImageButton x:Name="ExitButton"
+                                      Grid.Column="2"
+                                      Image="/Images/Exit.png"
+                                      MousePressedImage="/Images/MouseOverExit.png"
+                                      MouseOverImage="/Images/MouseOverExit.png"
+                                      MouseOverCursor="Hand"
+                                      MouseOverBackground="{StaticResource ExitMouseOverBackground}"
+                                      Click="ExitButton_Click"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="72" />
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel>
+                <controls:EllipseButton Grid.Column="0"
+                                        Width="72"
+                                        Height="56"
+                                        ButtonCornerRadius="50"
+                                        NormalImage="/Images/ChannelLogo.png"/>
+
+                <Rectangle Width="32" Height="2" Fill="{StaticResource EllipseButtonColor}" Margin="0, 4, 0, 4" />
+
+                <controls:EllipseButton x:Name="ellButton"
+                                        Grid.Column="0"
+                                        Width="72"
+                                        Height="56"
+                                        ButtonCornerRadius="50"
+                                        MouseOverBackground="{StaticResource ChannelMouseOverBackground}"
+                                        Content="수우파피플">
+                    
+                </controls:EllipseButton>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

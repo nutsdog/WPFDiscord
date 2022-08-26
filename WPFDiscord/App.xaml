@@ -1,0 +1,15 @@
+﻿<Application x:Class="WPFDiscord.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPFDiscord"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ChannelMouseOverBackground">#5865F2</Color>
+            <Brush x:Key="ExitMouseOverBackground">#ED4245</Brush>
+            <Brush x:Key="WindowStateMouseOverBackground">#33363B</Brush>
+
+            <Brush x:Key="EllipseButtonColor">#36393F</Brush>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
